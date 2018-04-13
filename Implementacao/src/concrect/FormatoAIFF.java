@@ -4,17 +4,19 @@
 package concrect;
 
 import interfaces.FormatoAudio;
+import problema1.AIFFSuperPlayer;
 
 /**
  * @author Luciane
  *
  */
-public class ManipulacaoAudio implements FormatoAudio {
+public class FormatoAIFF extends AIFFSuperPlayer implements FormatoAudio {
 
 	/**
-	 * 
+	 * @param file
 	 */
-	public ManipulacaoAudio() {
+	public FormatoAIFF(String file) {
+		super(file);
 		// TODO Auto-generated constructor stub
 	}
 

@@ -4,17 +4,19 @@
 package concrect;
 
 import interfaces.FormatoAudio;
+import problema1.WAVPlayer;
 
 /**
  * @author Luciane
  *
  */
-public class ManipulacaoAudio implements FormatoAudio {
+public class FormatoWAV extends WAVPlayer implements FormatoAudio {
 
 	/**
-	 * 
+	 * @param file
 	 */
-	public ManipulacaoAudio() {
+	public FormatoWAV(String file) {
+		super(file);
 		// TODO Auto-generated constructor stub
 	}
 

@@ -4,17 +4,18 @@
 package concrect;
 
 import interfaces.FormatoAudio;
+import problema1.wmaPlay;
 
 /**
  * @author Luciane
  *
  */
-public class ManipulacaoAudio implements FormatoAudio {
+public class FormatoWMA extends wmaPlay implements FormatoAudio {
 
 	/**
 	 * 
 	 */
-	public ManipulacaoAudio() {
+	public FormatoWMA() {
 		// TODO Auto-generated constructor stub
 	}
 

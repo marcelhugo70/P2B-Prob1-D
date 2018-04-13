@@ -10,14 +10,13 @@ import problema1.WAVPlayer;
  * @author Luciane
  *
  */
-public class FormatoWAV extends WAVPlayer implements FormatoAudio {
+public class FormatoWAV /*extends WAVPlayer*/ implements FormatoAudio {
 
+    private WAVPlayer player;
 	/**
-	 * @param file
+	 * 
 	 */
-	public FormatoWAV(String file) {
-		super(file);
-		// TODO Auto-generated constructor stub
+	public FormatoWAV() {
 	}
 
 	/* (non-Javadoc)
@@ -25,8 +24,7 @@ public class FormatoWAV extends WAVPlayer implements FormatoAudio {
 	 */
 	@Override
 	public void abrir(String audio) {
-		// TODO Auto-generated method stub
-
+        this.player = new WAVPlayer(audio);
 	}
 
 	/* (non-Javadoc)
@@ -34,8 +32,7 @@ public class FormatoWAV extends WAVPlayer implements FormatoAudio {
 	 */
 	@Override
 	public void reproduzir() {
-		// TODO Auto-generated method stub
-
+        this.player.play();
 	}
 
 	/* (non-Javadoc)
@@ -43,8 +40,7 @@ public class FormatoWAV extends WAVPlayer implements FormatoAudio {
 	 */
 	@Override
 	public void pausar() {
-		// TODO Auto-generated method stub
-
+        this.player.play();
 	}
 
 	/* (non-Javadoc)
@@ -52,8 +48,9 @@ public class FormatoWAV extends WAVPlayer implements FormatoAudio {
 	 */
 	@Override
 	public void parar() {
-		// TODO Auto-generated method stub
-
+        this.pausar();
+        int posicao = this.player.forward(0);
+        this.player.reward(posicao);
 	}
 
 	/* (non-Javadoc)
@@ -61,8 +58,7 @@ public class FormatoWAV extends WAVPlayer implements FormatoAudio {
 	 */
 	@Override
 	public void avancar(int segundo) {
-		// TODO Auto-generated method stub
-
+        this.player.forward(1000 * segundo);
 	}
 
 	/* (non-Javadoc)
@@ -70,8 +66,7 @@ public class FormatoWAV extends WAVPlayer implements FormatoAudio {
 	 */
 	@Override
 	public void retornar(int segundo) {
-		// TODO Auto-generated method stub
-
+        this.player.reward(segundo);
 	}
 
 	/* (non-Javadoc)
@@ -79,8 +74,7 @@ public class FormatoWAV extends WAVPlayer implements FormatoAudio {
 	 */
 	@Override
 	public void liberar() {
-		// TODO Auto-generated method stub
-
+        this.player = null;
 	}
 
 }

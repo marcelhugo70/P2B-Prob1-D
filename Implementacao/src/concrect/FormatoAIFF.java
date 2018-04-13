@@ -10,14 +10,14 @@ import problema1.AIFFSuperPlayer;
  * @author Luciane
  *
  */
-public class FormatoAIFF extends AIFFSuperPlayer implements FormatoAudio {
+public class FormatoAIFF /*extends AIFFSuperPlayer*/ implements FormatoAudio {
 
+    private AIFFSuperPlayer player;
+    private int cursor = 0;
 	/**
 	 * @param file
 	 */
-	public FormatoAIFF(String file) {
-		super(file);
-		// TODO Auto-generated constructor stub
+	public FormatoAIFF() {
 	}
 
 	/* (non-Javadoc)
@@ -25,8 +25,7 @@ public class FormatoAIFF extends AIFFSuperPlayer implements FormatoAudio {
 	 */
 	@Override
 	public void abrir(String audio) {
-		// TODO Auto-generated method stub
-
+        this.player = new AIFFSuperPlayer(audio);
 	}
 
 	/* (non-Javadoc)
@@ -34,8 +33,8 @@ public class FormatoAIFF extends AIFFSuperPlayer implements FormatoAudio {
 	 */
 	@Override
 	public void reproduzir() {
-		// TODO Auto-generated method stub
-
+        this.player.setLocation(this.cursor);
+        this.player.play();
 	}
 
 	/* (non-Javadoc)
@@ -43,8 +42,7 @@ public class FormatoAIFF extends AIFFSuperPlayer implements FormatoAudio {
 	 */
 	@Override
 	public void pausar() {
-		// TODO Auto-generated method stub
-
+        this.cursor = this.player.pause();
 	}
 
 	/* (non-Javadoc)
@@ -52,8 +50,8 @@ public class FormatoAIFF extends AIFFSuperPlayer implements FormatoAudio {
 	 */
 	@Override
 	public void parar() {
-		// TODO Auto-generated method stub
-
+        this.player.stop();
+        this.cursor = 0;
 	}
 
 	/* (non-Javadoc)
@@ -61,8 +59,12 @@ public class FormatoAIFF extends AIFFSuperPlayer implements FormatoAudio {
 	 */
 	@Override
 	public void avancar(int segundo) {
-		// TODO Auto-generated method stub
-
+        this.pausar();
+        this.cursor += segundo;
+        if (this.cursor < 0){
+            this.cursor = 0;
+        }
+        this.reproduzir();
 	}
 
 	/* (non-Javadoc)
@@ -70,8 +72,8 @@ public class FormatoAIFF extends AIFFSuperPlayer implements FormatoAudio {
 	 */
 	@Override
 	public void retornar(int segundo) {
-		// TODO Auto-generated method stub
-
+        int negSegundos = segundo * -1;
+        this.avancar(negSegundos);
 	}
 
 	/* (non-Javadoc)
@@ -79,8 +81,7 @@ public class FormatoAIFF extends AIFFSuperPlayer implements FormatoAudio {
 	 */
 	@Override
 	public void liberar() {
-		// TODO Auto-generated method stub
-
+        this.release();
 	}
 
 }

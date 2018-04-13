@@ -11,11 +11,12 @@ import interfaces.FormatoAudio;
  */
 public class ManipulacaoAudio implements FormatoAudio {
 
+    private FormatoAudio player;
+
 	/**
 	 * 
 	 */
 	public ManipulacaoAudio() {
-		// TODO Auto-generated constructor stub
 	}
 
 	/* (non-Javadoc)
@@ -23,8 +24,14 @@ public class ManipulacaoAudio implements FormatoAudio {
 	 */
 	@Override
 	public void abrir(String audio) {
-		// TODO Auto-generated method stub
-
+        if (audio.matches("\\.AIFF$")){
+            this.player = new FormatoAIFF();
+        } else if (audio.matches("\\.WAV$")){
+            this.player = new FormatoWAV();
+        } else if (audio.matches("\\.WMA$")){
+            this.player = new FormatoWMA();
+        }
+        this.player.abrir(audio);
 	}
 
 	/* (non-Javadoc)
@@ -32,7 +39,7 @@ public class ManipulacaoAudio implements FormatoAudio {
 	 */
 	@Override
 	public void reproduzir() {
-		// TODO Auto-generated method stub
+        this.player.reproduzir();
 
 	}
 
@@ -41,8 +48,7 @@ public class ManipulacaoAudio implements FormatoAudio {
 	 */
 	@Override
 	public void pausar() {
-		// TODO Auto-generated method stub
-
+        this.player.pausar();
 	}
 
 	/* (non-Javadoc)
@@ -50,8 +56,7 @@ public class ManipulacaoAudio implements FormatoAudio {
 	 */
 	@Override
 	public void parar() {
-		// TODO Auto-generated method stub
-
+        this.player.parar();
 	}
 
 	/* (non-Javadoc)
@@ -59,8 +64,7 @@ public class ManipulacaoAudio implements FormatoAudio {
 	 */
 	@Override
 	public void avancar(int segundo) {
-		// TODO Auto-generated method stub
-
+        this.player.avancar(segundo);
 	}
 
 	/* (non-Javadoc)
@@ -68,8 +72,7 @@ public class ManipulacaoAudio implements FormatoAudio {
 	 */
 	@Override
 	public void retornar(int segundo) {
-		// TODO Auto-generated method stub
-
+        this.player.retornar(segundo);
 	}
 
 	/* (non-Javadoc)
@@ -77,8 +80,7 @@ public class ManipulacaoAudio implements FormatoAudio {
 	 */
 	@Override
 	public void liberar() {
-		// TODO Auto-generated method stub
-
+        this.player.liberar();
 	}
 
 }

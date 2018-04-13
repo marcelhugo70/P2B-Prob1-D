@@ -24,11 +24,11 @@ public class ManipulacaoAudio implements FormatoAudio {
 	 */
 	@Override
 	public void abrir(String audio) {
-        if (audio.matches("\\.AIFF$")){
+        if (audio.toUpperCase().endsWith(".AIFF")){
             this.player = new FormatoAIFF();
-        } else if (audio.matches("\\.WAV$")){
+        } else if (audio.toUpperCase().endsWith(".WAV")){
             this.player = new FormatoWAV();
-        } else if (audio.matches("\\.WMA$")){
+        } else if (audio.toUpperCase().endsWith(".WMA")){
             this.player = new FormatoWMA();
         }
         this.player.abrir(audio);

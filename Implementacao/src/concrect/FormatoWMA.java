@@ -61,7 +61,7 @@ public class FormatoWMA /*extends wmaPlay */implements FormatoAudio {
 	 */
 	@Override
 	public void avancar(int segundo) {
-        int posicao = this.getLocation();
+        int posicao = this.player.getLocation();
         posicao += segundo;
         if (posicao < 0){
             posicao = 0;

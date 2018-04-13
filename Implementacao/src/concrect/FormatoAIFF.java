@@ -33,7 +33,7 @@ public class FormatoAIFF /*extends AIFFSuperPlayer*/ implements FormatoAudio {
 	 */
 	@Override
 	public void reproduzir() {
-        this.player.setLocation(this.cursor);
+        this.player.setCursor(this.cursor);
         this.player.play();
 	}
 
@@ -81,7 +81,7 @@ public class FormatoAIFF /*extends AIFFSuperPlayer*/ implements FormatoAudio {
 	 */
 	@Override
 	public void liberar() {
-        this.release();
+        this.player.release();
 	}
 
 }

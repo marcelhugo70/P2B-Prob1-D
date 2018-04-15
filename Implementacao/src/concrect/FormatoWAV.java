@@ -10,77 +10,48 @@ import problema1.WAVPlayer;
  * @author Luciane
  *
  */
-public class FormatoWAV extends WAVPlayer implements FormatoAudio {
+public class FormatoWAV  implements FormatoAudio {
 
-	/**
-	 * @param file
-	 */
-	public FormatoWAV(String file) {
-		super(file);
-		// TODO Auto-generated constructor stub
-	}
+    private WAVPlayer player;
 
-	/* (non-Javadoc)
-	 * @see interfaces.FormatoAudio#abrir(java.lang.String)
-	 */
-	@Override
-	public void abrir(String audio) {
-		// TODO Auto-generated method stub
+    public FormatoWAV() {
+    }
 
-	}
+    @Override
+    public void abrir(String audio) {
+        this.player = new WAVPlayer(audio);
+    }
 
-	/* (non-Javadoc)
-	 * @see interfaces.FormatoAudio#reproduzir()
-	 */
-	@Override
-	public void reproduzir() {
-		// TODO Auto-generated method stub
+    @Override
+    public void reproduzir() {
+        this.player.play();
+    }
 
-	}
+    @Override
+    public void pausar() {
+        this.player.play();
+    }
 
-	/* (non-Javadoc)
-	 * @see interfaces.FormatoAudio#pausar()
-	 */
-	@Override
-	public void pausar() {
-		// TODO Auto-generated method stub
+    @Override
+    public void parar() {
+        this.pausar();
+        int posicao = this.player.forward(0);
+        this.player.reward(posicao);
+    }
 
-	}
+    @Override
+    public void avancar(int segundo) {
+        this.player.forward(1000 * segundo);
+    }
 
-	/* (non-Javadoc)
-	 * @see interfaces.FormatoAudio#parar()
-	 */
-	@Override
-	public void parar() {
-		// TODO Auto-generated method stub
+    @Override
+    public void retornar(int segundo) {
+        this.player.reward(segundo);
+    }
 
-	}
-
-	/* (non-Javadoc)
-	 * @see interfaces.FormatoAudio#avancar(int)
-	 */
-	@Override
-	public void avancar(int segundo) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see interfaces.FormatoAudio#retornar(int)
-	 */
-	@Override
-	public void retornar(int segundo) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see interfaces.FormatoAudio#liberar()
-	 */
-	@Override
-	public void liberar() {
-		// TODO Auto-generated method stub
-
-	}
+    @Override
+    public void liberar() {
+        this.player = null;
+    }
 
 }

@@ -1,9 +1,16 @@
-Padrões de Projeto
+﻿Padrões de Projeto
 
 Adapter: A interface FormatoAudio realiza o papel de Target. 
-As classes utilizadas pela empresa(Problema1) realizam o papel de Adaptee.
+As classes utilizadas pela empresa(Problema1) e a classe de testes AudioTest(utilizada pelo cliente) realizam o papel de Adaptee.
 As classes FormatoWMA, FormatoAIFF, FormatoWAV, FormatoACC, e Formato MP3DJ realizam o papel de Adapter. 
 
-Façade: A classe FormatoAudioFacade realiza o papel de Façade.
 
-FactoryMethod: A classe FormatoAudioFactory realiza o papel de Factory Method.
+Façade: A classe AudioTest e as classes do cliente (que vão utilizar nossa façade) realizam o papel de Client.
+A classe FormatoAudioFacade realiza o papel de Façade.
+As classes FormatoAudio, FormatoAudioFactory, FormatoWMA, FormatoAIFF, FormatoWAV, FormatoACC, e Formato MP3DJ realizam o papel de
+Subsistema.
+
+
+FactoryMethod: A classe FormatoAudioFactory realiza o papel de ConcreteCreater.
+A Interface FormatoAudio realiza o papel de Product.
+As classes FormatoWMA, FormatoAIFF, FormatoWAV, FormatoACC, e Formato MP3DJ realizam o papel de ConcreteProduct

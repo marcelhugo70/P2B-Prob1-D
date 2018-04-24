@@ -1,48 +1,48 @@
-
 package concrect;
 
 import interfaces.FormatoAudio;
-import problema1.AIFFSuperPlayer;
+import problema1.AACPlayer;
 
 /**
  * @authors Gustavo Henrique Spiess, Gustavo Korbes Heinen, Luciane Tedesco e
  *          Matheus Mahnke
  *
  */
-public class FormatoAIFF implements FormatoAudio {
+public class FormatoAAC implements FormatoAudio {
 
-	private AIFFSuperPlayer player = null;
-	private int cursor = 0;
+	private AACPlayer player = null;
 
 	@Override
 	public void abrir(String audio) {
-		this.player = new AIFFSuperPlayer(audio);
+		this.player = new AACPlayer(audio);
+		this.player.open();
+		this.player.setLocation(0);
 	}
 
+	@Override
 	public void reproduzir() {
-		this.player.setCursor(this.cursor);
 		this.player.play();
 	}
 
 	@Override
 	public void pausar() {
-		this.cursor = this.player.pause();
+		this.player.stop();
 	}
 
 	@Override
 	public void parar() {
-		this.player.stop();
-		this.cursor = 0;
+		this.pausar();
+		this.player.setLocation(0);
 	}
 
 	@Override
 	public void avancar(int segundo) {
-		this.pausar();
-		this.cursor += segundo;
-		if (this.cursor < 0) {
-			this.cursor = 0;
+		int posicao = this.player.getLocation();
+		posicao += segundo;
+		if (posicao < 0) {
+			posicao = 0;
 		}
-		this.reproduzir();
+		this.player.setLocation(posicao);
 	}
 
 	@Override
@@ -53,6 +53,7 @@ public class FormatoAIFF implements FormatoAudio {
 
 	@Override
 	public void liberar() {
-		this.player.release();
+		this.player = null;
 	}
+
 }

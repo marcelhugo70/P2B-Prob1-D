@@ -13,12 +13,9 @@ public class FormatoWMA implements FormatoAudio {
 
 	private wmaPlay player = null;
 
-	public FormatoWMA() {
-		this.player = new wmaPlay();
-	}
-
 	@Override
 	public void abrir(String audio) {
+		this.player = new wmaPlay();
 		this.player.setFile(audio);
 		this.player.open();
 		this.player.setLocation(0);

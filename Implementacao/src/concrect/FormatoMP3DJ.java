@@ -1,21 +1,21 @@
-
 package concrect;
 
 import interfaces.FormatoAudio;
-import problema1.WAVPlayer;
+import problema1.MP3DJ;
 
 /**
  * @authors Gustavo Henrique Spiess, Gustavo Korbes Heinen, Luciane Tedesco e
  *          Matheus Mahnke
  *
  */
-public class FormatoWAV implements FormatoAudio {
+public class FormatoMP3DJ implements FormatoAudio {
 
-	private WAVPlayer player = null;
+	private MP3DJ player = null;
 
 	@Override
 	public void abrir(String audio) {
-		this.player = new WAVPlayer(audio);
+		this.player = new MP3DJ();
+		this.player.setFile(audio);
 	}
 
 	@Override
@@ -36,13 +36,13 @@ public class FormatoWAV implements FormatoAudio {
 	}
 
 	@Override
-	public void avancar(int segundo) {
-		this.player.forward(segundo * 1000);
+	public void avancar(int segundos) {
+		this.player.forward(segundos);
 	}
 
 	@Override
-	public void retornar(int segundo) {
-		this.player.reward(segundo * 1000);
+	public void retornar(int segundos) {
+		this.player.reward(segundos);
 	}
 
 	@Override

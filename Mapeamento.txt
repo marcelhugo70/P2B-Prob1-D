@@ -2,6 +2,7 @@
 
 Adapter: A interface FormatoAudio realiza o papel de Target. 
 As classes utilizadas pela empresa(Problema1) e a classe de testes AudioTest(utilizada pelo cliente) realizam o papel de Adaptee.
+--> Prof. Marcel: os adaptados (adaptee) são as classes disponibilizadas pela empresa (.jar). Problema1 e AudioTest desempenham o papel de cliente.
 As classes FormatoWMA, FormatoAIFF, FormatoWAV, FormatoACC, e Formato MP3DJ realizam o papel de Adapter. 
 
 
